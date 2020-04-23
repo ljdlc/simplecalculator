@@ -43,10 +43,11 @@
     text-align: center;
     background-color: #0e045ca8;
     color: white;
+    transition: all .02s;
 }
 
 .pressed {
     transform: scale(1.1);
-    border-color: #ffc600;
-    box-shadow: 0 0 1rem #ffc600;
+    border-color: #000000;
+    box-shadow: 0 0 1rem #181713;
   }

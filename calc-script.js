@@ -184,6 +184,18 @@ equals.addEventListener('click', function(e){
   display.textContent = solveArray(displayArray);
 });
 
+const allbuttons = document.querySelectorAll('.button');
+
+allbuttons.forEach(button => button.addEventListener('click', function(e){
+  this.classList.add('pressed');
+}));
+allbuttons.forEach(button => button.addEventListener('transitionend', function(e){
+  if (e.propertyName !== 'transform'){
+    return; 
+  }
+  this.classList.remove('pressed');
+}));
+
 //FUNCTIONS
 function displayToArray(){
   let displayarray = [''];
