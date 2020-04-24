@@ -1,4 +1,4 @@
-//INITIALIZE DISPLAY AREA
+//INITIALIZE DISPLAY AREA AND VARIABLES
 const display = document.querySelector('.display');
 let memory;
 const errarray = ['++','+*','+/','-+','-/','-*','*+','**','*/','/+','/-','/*', '--', '//'];
@@ -143,6 +143,7 @@ zero.addEventListener('click', function(e){
   if (display.textContent.length == 9){
     return;
   }
+  display.textContent += '0';
 });
 
 const decimal = document.getElementById('decimal');
@@ -184,17 +185,25 @@ equals.addEventListener('click', function(e){
   display.textContent = solveArray(displayArray);
 });
 
+//BUTTON PRESS TRANSFORM
 const allbuttons = document.querySelectorAll('.button');
-
 allbuttons.forEach(button => button.addEventListener('click', function(e){
   this.classList.add('pressed');
 }));
+
 allbuttons.forEach(button => button.addEventListener('transitionend', function(e){
   if (e.propertyName !== 'transform'){
     return; 
   }
   this.classList.remove('pressed');
 }));
+
+//KEYBOARD FUNCTIONALITY
+window.addEventListener("keydown", function(e) {
+  const key = document.querySelector(`.button[data-key="${e.key}"]`);
+  if (!key) { return; }
+  key.click();
+}); 
 
 //FUNCTIONS
 function displayToArray(){
